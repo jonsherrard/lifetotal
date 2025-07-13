@@ -27,15 +27,15 @@ export default function SettingsModal({
     
     switch (orientation) {
       case 'top':
-        return `${baseClasses} top-4 left-1/2 -translate-x-1/2`;
+        return `${baseClasses} top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-180`;
       case 'right':
-        return `${baseClasses} right-4 top-1/2 -translate-y-1/2`;
+        return `${baseClasses} top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90`;
       case 'bottom':
-        return `${baseClasses} bottom-4 left-1/2 -translate-x-1/2`;
+        return `${baseClasses} top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`;
       case 'left':
-        return `${baseClasses} left-4 top-1/2 -translate-y-1/2`;
+        return `${baseClasses} top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90`;
       default:
-        return `${baseClasses} top-4 left-1/2 -translate-x-1/2`;
+        return `${baseClasses} top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`;
     }
   };
 
@@ -156,6 +156,37 @@ export default function SettingsModal({
               </label>
             </div>
           </div>
+
+          {/* 5-Player Layout Option */}
+          {localSettings.playerCount === 5 && (
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                5-Player Layout
+              </label>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleSettingChange('fivePlayerLayout', '3v2')}
+                  className={`px-3 py-2 rounded font-medium transition-colors flex-1 ${
+                    localSettings.fivePlayerLayout === '3v2'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  }`}
+                >
+                  3 vs 2
+                </button>
+                <button
+                  onClick={() => handleSettingChange('fivePlayerLayout', '2-2-1')}
+                  className={`px-3 py-2 rounded font-medium transition-colors flex-1 ${
+                    localSettings.fivePlayerLayout === '2-2-1'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  }`}
+                >
+                  2-2-1
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Game Actions */}
           <div className="space-y-3 pt-4 border-t border-gray-600">

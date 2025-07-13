@@ -10,11 +10,14 @@ export interface Player {
   lifeLinkActive: boolean;
 }
 
+export type PlayerOrientation = 'top' | 'right' | 'bottom' | 'left';
+
 export interface GameSettings {
   playerCount: number;
   startingLife: number;
   commanderFormat: boolean;
   lifeLinkEnabled: boolean;
+  fivePlayerLayout?: '3v2' | '2-2-1';
 }
 
 export interface GameState {
