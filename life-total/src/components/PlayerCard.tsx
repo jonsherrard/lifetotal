@@ -133,8 +133,9 @@ export default function PlayerCard({
   const getCommanderDamageOrder = () => {
     switch (orientation) {
       case "left":
-      case "right":
         return "order-4";
+      case "right":
+        return "order-1";
       case "top":
         return "order-2";
       default: // bottom
@@ -255,25 +256,33 @@ export default function PlayerCard({
         <div className={`${getButtonContainerClasses()} ${getButtonsOrder()}`}>
           <button
             onClick={() => handleLifeChange(-5)}
-            className="w-12 h-12 bg-red-600 hover:bg-red-500 rounded-full text-white font-bold text-lg"
+            className={`w-12 h-12 bg-red-600 hover:bg-red-500 rounded-full text-white font-bold text-lg ${
+              orientation === "right" ? "-rotate-90" : ""
+            }`}
           >
             -5
           </button>
           <button
             onClick={() => handleLifeChange(-1)}
-            className="w-12 h-12 bg-red-600 hover:bg-red-500 rounded-full text-white font-bold text-lg"
+            className={`w-12 h-12 bg-red-600 hover:bg-red-500 rounded-full text-white font-bold text-lg ${
+              orientation === "right" ? "-rotate-90" : ""
+            }`}
           >
             -1
           </button>
           <button
             onClick={() => handleLifeChange(1)}
-            className="w-12 h-12 bg-green-600 hover:bg-green-500 rounded-full text-white font-bold text-lg"
+            className={`w-12 h-12 bg-green-600 hover:bg-green-500 rounded-full text-white font-bold text-lg ${
+              orientation === "right" ? "-rotate-90" : ""
+            }`}
           >
             +1
           </button>
           <button
             onClick={() => handleLifeChange(5)}
-            className="w-12 h-12 bg-green-600 hover:bg-green-500 rounded-full text-white font-bold text-lg"
+            className={`w-12 h-12 bg-green-600 hover:bg-green-500 rounded-full text-white font-bold text-lg ${
+              orientation === "right" ? "-rotate-90" : ""
+            }`}
           >
             +5
           </button>
