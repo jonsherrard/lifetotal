@@ -1,0 +1,19 @@
+.verticalLr {
+  writing-mode: vertical-lr;
+}
+
+.verticalRl {
+  writing-mode: vertical-rl;
+}
+
+.rotateTextRight {
+  transform: rotate(90deg);
+}
+
+.rotateTextLeft {
+  transform: rotate(-90deg);
+}
+
+.horizontalTb {
+  writing-mode: horizontal-tb;
+}

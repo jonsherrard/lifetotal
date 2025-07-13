@@ -105,8 +105,9 @@ export default function PlayerCard({
   const getPlayerNameOrder = () => {
     switch (orientation) {
       case "left":
-      case "right":
         return "order-1";
+      case "right":
+        return "order-4";
       case "top":
         return "order-4";
       default: // bottom
@@ -121,8 +122,9 @@ export default function PlayerCard({
   const getButtonsOrder = () => {
     switch (orientation) {
       case "left":
-      case "right":
         return "order-3";
+      case "right":
+        return "order-1";
       case "top":
         return "order-1";
       default: // bottom
@@ -135,7 +137,7 @@ export default function PlayerCard({
       case "left":
         return "order-4";
       case "right":
-        return "order-1";
+        return "order-3";
       case "top":
         return "order-2";
       default: // bottom

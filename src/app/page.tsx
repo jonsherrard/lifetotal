@@ -207,9 +207,9 @@ export default function Home() {
         return playerPosition <= 2 ? "bottom" : "top";
       }
 
-      // 4 players: 2x2 grid (2 top, 2 bottom)
+      // 4 players: 2x2 grid (1,4 bottom facing up, 2,3 top facing down)
       if (playerCount === 4) {
-        return playerPosition <= 2 ? "bottom" : "top";
+        return playerPosition === 1 || playerPosition === 4 ? "bottom" : "top";
       }
 
       // 5 players: layout depends on setting
@@ -279,7 +279,18 @@ export default function Home() {
 
           // Special grid positioning for layouts
           let gridClasses = "";
-          if (playerCount === 5) {
+          if (playerCount === 3) {
+            // 3 player layout: Players 1-2 at bottom, Player 3 at top spanning both columns
+            if (index === 0) gridClasses = "col-start-1 row-start-2";
+            if (index === 1) gridClasses = "col-start-2 row-start-2";
+            if (index === 2) gridClasses = "col-start-1 row-start-1 col-span-2";
+          } else if (playerCount === 4) {
+            // 4 player layout: Column 1 has Player 2 above Player 1, Column 2 has Player 3 above Player 4
+            if (index === 0) gridClasses = "col-start-1 row-start-2"; // Player 1 - bottom left
+            if (index === 1) gridClasses = "col-start-1 row-start-1"; // Player 2 - top left
+            if (index === 2) gridClasses = "col-start-2 row-start-1"; // Player 3 - top right
+            if (index === 3) gridClasses = "col-start-2 row-start-2"; // Player 4 - bottom right
+          } else if (playerCount === 5) {
             if (fivePlayerLayout === "2-2-1") {
               // 2-2-1 layout positioning:
               // Column 1: Player 2 above Player 1
